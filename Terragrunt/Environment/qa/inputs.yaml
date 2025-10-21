@@ -1,0 +1,12 @@
+
+origin_bucket_id: "kishore-demo-cf"
+aliases: []
+default_root_object: "filtered_products.json"
+tags:
+  Environment: "Test"
+  Name: "ProductCloudFront"
+  Owner: "kishore"
+  Terraform: "True"
+origin_access_identity_comment: "OAI for kishore-demo"
+comment: "CloudFront Distribution for Kishore demo "
+force_destroy: true

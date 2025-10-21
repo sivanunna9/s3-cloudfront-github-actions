@@ -1,0 +1,28 @@
+name: Destroy deploy Infrastructure
+
+on:
+  workflow_dispatch:  
+jobs:
+  destroy-infra:
+    runs-on: self-hosted
+    
+    
+    steps:
+      # Checkout repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set AWS environment variables
+      - name: Set AWS Env Vars
+        run: |
+          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
+          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
+          echo "AWS_DEFAULT_REGION=${{ secrets.AWS_DEFAULT_REGION }}" >> $GITHUB_ENV
+
+      # Apply Terragrunt configuration for QA environment
+      - name: Apply Terragrunt
+        working-directory: Terragrunt/Environment/qa
+        env:
+         TERRAGRUNT_NON_INTERACTIVE: "true"
+        run: |
+          terragrunt run-all destroy -auto-approve

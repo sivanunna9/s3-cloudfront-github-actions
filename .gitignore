@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+.env
+
+# Terragrunt/Terraform
+.terragrunt-cache/
+*.tfstate
+*.tfstate.*
+*.tfvars
+
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Other
+*.zip
+*.tar.gz
+

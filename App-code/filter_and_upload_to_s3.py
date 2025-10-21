@@ -18,7 +18,7 @@ def filter_products(url, output_file):
     with open(output_file, "w") as f:
         json.dump({"products": filtered}, f, indent=4)
 
-    print(f"✅ Filtered data saved to {output_file}")
+    print(f" Filtered data saved to {output_file}")
 
 def upload_to_s3(file_path, s3_bucket, s3_key):
     """
@@ -30,7 +30,7 @@ def upload_to_s3(file_path, s3_bucket, s3_key):
     aws_region = os.getenv("AWS_DEFAULT_REGION")
 
     if not all([aws_access_key, aws_secret_key, aws_region, s3_bucket]):
-        raise EnvironmentError("❌ Missing AWS credentials or bucket name!")
+        raise EnvironmentError(" Missing AWS credentials or bucket name!")
 
     s3 = boto3.client(
         "s3",
@@ -48,7 +48,7 @@ def upload_to_s3(file_path, s3_bucket, s3_key):
             "ContentDisposition": f'attachment; filename="{os.path.basename(file_path)}"'
         }
     )
-    print(f"✅ File uploaded successfully to s3://{s3_bucket}/{s3_key}")
+    print(f" File uploaded successfully to s3://{s3_bucket}/{s3_key}")
 
 def verify_via_cloudfront(url):
     print(f"Verifying file from CloudFront URL: {url}")
@@ -56,12 +56,12 @@ def verify_via_cloudfront(url):
     if response.status_code == 200:
         try:
             data = response.json()
-            print("✅ JSON verified successfully from CloudFront.")
+            print(" JSON verified successfully from CloudFront.")
             print(f"Total filtered products: {len(data.get('products', []))}")
         except json.JSONDecodeError:
-            print("❌ The file downloaded is NOT a valid JSON.")
+            print(" The file downloaded is NOT a valid JSON.")
     else:
-        print(f"❌ Failed to download file. Status code: {response.status_code}")
+        print(f" Failed to download file. Status code: {response.status_code}")
 
 
 if __name__ == "__main__":

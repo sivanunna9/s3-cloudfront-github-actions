@@ -67,9 +67,9 @@ def verify_via_cloudfront(url):
 if __name__ == "__main__":
     url = "https://dummyjson.com/products"
     output_file = "filtered_products.json"
-    s3_bucket = "kishore-demo-cf"
-    s3_key = "filtered_products.json"
-    cloudfront_url= "https://d24zjf9hlg3b46.cloudfront.net/"
+    s3_key = "filtered_products.json" 
+    s3_bucket = "kishore-demo-cf" ## Add your s3 bucket name
+    cloudfront_url= "https://d24zjf9hlg3b46.cloudfront.net/" ## Add your cloudfront url
     
     
 

@@ -67,9 +67,9 @@ def verify_via_cloudfront(url):
 if __name__ == "__main__":
     url = "https://dummyjson.com/products"
     output_file = "filtered_products.json"
-    s3_bucket = os.getenv("S3_BUCKET_NAME")  # Use environment variable
+    s3_bucket = "kishore-demo-cf"
     s3_key = "filtered_products.json"
-    cloudfront_url= ""
+    cloudfront_url= "https://d24zjf9hlg3b46.cloudfront.net/"
     
     
 
